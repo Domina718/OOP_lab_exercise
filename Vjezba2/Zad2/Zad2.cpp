@@ -15,7 +15,7 @@ int& vrati(int* arr, int i)
 void main()
 {
 	int arr[] = { 5,4,3,2,-5,7,12 };
-	vrati(arr, 3) ++;
+	vrati(arr, 3)++;
 	for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
 		cout << arr[i] << endl;
 
