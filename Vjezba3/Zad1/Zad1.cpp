@@ -1,9 +1,6 @@
 // Zad1.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-
 #include "z1.hpp"
-
 
 int main()
 {
@@ -13,6 +10,5 @@ int main()
 
     printVector(v1);
     printVector(v2);
-    
 }
 

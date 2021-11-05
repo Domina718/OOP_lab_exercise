@@ -1,7 +1,6 @@
 #include "z1.hpp"
 
 
-
 void inputVector(vector <int>& v, int n)
 {
 	int e;

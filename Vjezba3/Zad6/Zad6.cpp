@@ -10,7 +10,7 @@ using namespace std;
 vector<string> reverseSortedStringsInVector()
 {
     vector<string> vs;
-    string s, rs;
+    string s;
     cout << "Unosite stringove, kad ste gotovi pritisnite CTRL + z" << endl;
     while (getline(cin, s))
     { 

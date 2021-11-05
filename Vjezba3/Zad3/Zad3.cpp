@@ -14,16 +14,23 @@ void printVector(vector <int> v)
 	cout << endl;
 }
 
+int vectorSum (vector<int> v)
+{
+	int sum = 0, size = v.size();
+	for (int i = 0; i < size; i++)
+		sum += v[i];
+	return sum;
+}
+
 
 int main()
 {
 	vector<int> v{ 3, 6, 23, 7, 24, 14, 7, 29 };
+
 	sort(v.begin(), v.end());
+
 	v.insert(v.begin(), 0);
-	int sum = 0, size = v.size();
-	for (int i = 0; i < size; i++)
-		sum += v[i];
-	v.push_back(sum);
+	v.push_back(vectorSum(v));
 
 	printVector(v);
 

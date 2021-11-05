@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-//#include <algorithm>
 using namespace std;
 
 
@@ -16,6 +15,17 @@ void inputVector(vector <int>& v, int n)
 		cin >> e;
 		v.push_back(e);
 	}
+}
+
+void removeElement(vector<int>& v)
+{
+	int n;
+	cout << "\nUnesite poziciju elementa kojeg zelite ukloniti  ";
+	cin >> n;
+
+	v.erase(v.begin() + n - 1);
+	v.insert(v.begin() + n, *(v.end() - 1));
+	v.pop_back();
 }
 
 void printVector(vector <int> v)
@@ -34,13 +44,7 @@ int main()
 	inputVector(v, 7);
 	//cout << "\nVelicina vektora je " << v.size() << endl;
 
-	int n;
-	cout << "Unesite poziciju elementa kojeg zelite ukloniti  ";
-	cin >> n;
-
-	v.erase(v.begin()+n-1);
-	v.insert(v.begin()+n, *(v.end()-1));
-	v.pop_back();
+	removeElement(v);
 
 	//cout << "\nVelicina vektora je " << v.size()<< endl;
 
