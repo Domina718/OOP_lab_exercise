@@ -21,7 +21,7 @@ void HangmanView::displayAllGuesses() {
 void HangmanView::displayLivesLeft() {
 
 	if (ctrl.isGameOver()) {
-		cout << "\n\nGAME OVER. YOU SUCK!" << endl;
+		cout << "\n\nGAME OVER. YOU LOSE!" << endl;
 		exit(0);
 	}
 	 else if (ctrl.isGameWon()) {
