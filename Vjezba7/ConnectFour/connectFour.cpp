@@ -103,7 +103,7 @@ Board::Board( Board&& other) {
 		delete[]other.matrix[i]; 
 	} 
 	delete[]other.matrix;
-	other.matrix = nullptr;
+	// other.matrix = nullptr;
 	other.c = NULL;
 	other.x = NULL;
 	other.y = NULL;
@@ -143,11 +143,11 @@ void Board::draw_up_line(Point p1, char c) {
 
 void Board::draw_line(Point p1, Point p2, char c) {
 	if (p1.x > x - 1 || p1.y > y - 1 || !p1.x || !p1.y) {
-		cout << "Tocka 1 je izvan dimenzija matrice" << endl;
+		cout << "Point 1 is out of matrix dimensions" << endl;
 		return;
 	}
 	if (p2.x > x - 1 || p2.y > y - 1 || !p2.x || !p2.y) {
-		cout << "Tocka 2 je izvan dimenzija matrice" << endl;
+		cout << "Point 2 is out of matrix dimensions" << endl;
 		return;
 	}
 	if (p1.x == p2.x) {
@@ -178,7 +178,7 @@ void Board::draw_line(Point p1, Point p2, char c) {
 		}
 		return;
 	}
-	cout << "Ne moze se povuci crta izmedju tocaka" << endl;
+	cout << "Line can't be drawn between these points" << endl;
 	return;
 }
 
