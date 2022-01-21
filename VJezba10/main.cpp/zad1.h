@@ -5,7 +5,7 @@
 
 using namespace std;
 
-template <class T>
+template <typename T>
 void swapTwo(T& a, T& b) {
 	T t = a;
 	a = b;
