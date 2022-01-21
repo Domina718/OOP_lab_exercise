@@ -1,4 +1,5 @@
 #include "Timer.hpp"
+#include <algorithm>
 
 int Timer:: get_h() const{
 	return this->h;
@@ -12,54 +13,52 @@ double Timer::get_s() const{
 	return this->s;
 }
 
-void Timer::set_h(int h) {
-	this->h = h;
-}
-
-void Timer::set_m(int m) {
-	this->m = m;
-}
-
-void Timer::set_s(double s) {
-	this->s = s;
-}
 
 Timer::operator double() {
-	/*set_s( double(h)* 3600 + double(m) * 60 + s);
-	return this->s;*/
-	return double(h) * 3600 + double(m) * 60 + s;
+
+	return double(this->h) * 3600 + double(this->m) * 60 + this->s;
 }
 
-Timer& operator+=(Timer& s, Timer& a) {
-	/*s.set_h(s.get_h() + a.get_h());
-	s.set_m(s.get_m() + a.get_m());*/
-	s.set_s(s.get_s() + a);
-	return s;
+Timer& Timer::operator+=(const Timer& a) {
+
+	this->s += a.get_h() * 3600 + a.get_m() * 60 + a.get_s();
+	return *this;
 }
 
-Timer& operator/=(Timer& s, int size) {
-	s.set_s(s.get_s() / size);
-	s.set_h(int(s.get_s())/3600);
-	s.set_m(int(s.get_s()) % 3600 / 60);
-	s.set_s(s.get_s() - s.get_h()*1.0*3600 - s.get_m()*1.0*60);
-	return s;
+Timer& Timer::operator-(const Timer& a) {
+
+	this->s = this->s - a.get_s();
+	this->m = this->m - a.get_m();
+	this->h = this->h - a.get_h();
+	return *this;
+}
+
+Timer& Timer::operator/=(int size) {
+
+	this->s /= size;
+	this->h = this->s / 3600;
+	this->m = (this->s - this->h*3600) / 60;
+	this->s = this->s - this->h*3600 - this->m*60;
+
+	return *this;
 }
 
 
 ostream& operator<< (ostream& os, const Timer& t) {
+
 	os << t.get_h() << ':' << t.get_m() << ':' << t.get_s();
 	return os;
 }
 
+bool Timer::operator<(const Timer& a) {
 
-Timer& Penalty::operator()(Timer& t){
-	t.set_s(t.get_s + ps);
-	if (t.get_s() >= 60) {
-		t.set_m(t.get_m() + int(t.get_s()) / 60);
-		t.set_s(t.get_s() - 60 * int(t.get_s()) / 60);
-		if(t.get_m() >= 60){
-			t.set_h(t.get_h() + t.get_m() / 60);
-			t.set_m(t.get_m() - 60 * t.get_m() / 60);
-		}
-	}
+	return double(*this) < (a.get_h() * 3600 + a.get_m() * 60 + a.get_s());
+}
+
+
+Timer& Penalty::operator()(Timer& t) {
+	
+	Timer p = Timer(0, 0, ps);
+	t +=p;
+	return t;
 }
