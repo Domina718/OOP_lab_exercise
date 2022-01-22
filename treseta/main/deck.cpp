@@ -7,19 +7,40 @@
 using namespace std;
 
 
-deck::deck() {
+void deck::initialize_deck() {
 	string card_suits[] = { "SWORDS", "CUPS", "COINS", "CLUBS" };
 	string card_numbers[] = { "ACE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "KNAVE", "KNIGHT", "KING" };
 	for (auto s : card_suits) {
 		for (auto n : card_numbers) {
 			if (n == "ACE") {
-				d.push_back(card(s, n, 3));
+				d.push_back(card(s, n, 8, 3));
 			}
-			else if (n == "TWO" || n == "THREE" || n == "KNAVE" || n == "KNIGHT" || n == "KING") {
-				d.push_back(card(s, n, 1));
+			else if (n == "TWO") {
+				d.push_back(card(s, n, 9, 1));
+			}
+			else if (n == "THREE") {
+				d.push_back(card(s, n, 10, 1));
+			}
+			else if (n == "KNAVE") {
+				d.push_back(card(s, n, 5, 1));
+			}
+			else if (n == "KNIGHT") {
+				d.push_back(card(s, n, 6, 1));
+			}
+			else if(n == "KING") {
+				d.push_back(card(s, n, 7, 1));
+			}
+			else if(n == "SEVEN"){
+				d.push_back(card(s, n, 4, 0));
+			}
+			else if (n == "SIX") {
+				d.push_back(card(s, n, 3, 0));
+			}
+			else if (n == "FIVE") {
+				d.push_back(card(s, n, 2, 0));
 			}
 			else {
-				d.push_back(card(s, n, 0));
+				d.push_back(card(s, n, 1, 0));
 			}
 		}
 	}
@@ -27,7 +48,8 @@ deck::deck() {
 
 void deck::print_deck() const{
 	for (auto c : this->d)
-		cout << c.get_number() << " of " << c.get_suit() << " point: " << c.get_value() << endl;
+		cout << c;
+		
 }
 
 void deck::shuffle() {

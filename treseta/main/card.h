@@ -6,19 +6,22 @@ using namespace std;
 class card {
 	string suit;
 	string number;
+	int strength;
 	int value;
 public:
-	card() {};
-	card(string suit, string number, int value) {
+	card() { value = 0; };
+	card(string suit, string number, int strength, int value) {
 		this->suit = suit;
 		this->number = number;
+		this->strength = strength;
 		this->value = value;
 	};
 
 	string get_number() const;
 	string get_suit() const;
 	int get_value() const;
-	ostream& operator<< (card& c) { cout << number << " of " << suit << endl; };
+	int get_strength() const;
+	friend ostream& operator<< (ostream& output, const card& c) { output << c.number << " of " << c.suit << endl; return output; };
 	bool& operator==(card& c) { 
 		bool result = false;
 

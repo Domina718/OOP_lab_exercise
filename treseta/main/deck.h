@@ -7,7 +7,7 @@ using namespace std;
 class deck {
 	vector<card> d;
 public:
-	deck();
+	void initialize_deck();
 	void shuffle();
 	card draw();
 	bool is_empty();

@@ -4,27 +4,16 @@
 #include <iostream>
 #include "game.h"
 #include "deck.h"
-#include "card.h"
+#include "game.h"
+#include <random>
+#include <time.h>
 
 using namespace std;
 
 int main()
 {
-    deck deck;
-    deck.print_deck();
-    cout << "\n\n\n\nSHUFFLE\n\n";
-    deck.shuffle();
-    deck.print_deck();
-    humanplayer h;
-
-    vector<card> hand = deck.deal();
-
-    cout << "\n\nruka\n\n";
-    for (auto c : hand)
-        cout << c.get_number() << " of " << c.get_suit() << endl;
-
-    cout << "\n\n\n rest od deck\n" << endl;
-    deck.print_deck();
-
+    srand(time(NULL));
+    game treseta("Luka");
+    treseta.play();
     return 0;
 }
