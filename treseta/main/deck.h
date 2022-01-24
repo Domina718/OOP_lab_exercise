@@ -10,7 +10,7 @@ public:
 	void initialize_deck();
 	void shuffle();
 	card draw();
-	bool is_empty();
+	bool is_empty()const;
 	void print_deck() const;
 	vector<card> deal();
 };

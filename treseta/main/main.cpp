@@ -1,6 +1,3 @@
-// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include "game.h"
 #include "deck.h"
@@ -13,7 +10,10 @@ using namespace std;
 int main()
 {
     srand(time(NULL));
-    game treseta("Luka");
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
+    game treseta(name);
     treseta.play();
     return 0;
 }

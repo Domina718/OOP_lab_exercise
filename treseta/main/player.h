@@ -16,11 +16,11 @@ public:
 	void add_points(int last_point);
 	int score() const;
 	void set_hand(vector<card> hand);
+	void akuza();
 	void draw_card(card& c);
     void show_hand() const;
 	string get_name()const;
 	void reset_won_pile();
 	virtual card play_card() = 0;
-	virtual card play_card(card& c) = 0;
-	
+	virtual card play_card(card& c) = 0;	
 };

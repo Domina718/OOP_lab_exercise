@@ -49,29 +49,31 @@ void deck::initialize_deck() {
 void deck::print_deck() const{
 	for (auto c : this->d)
 		cout << c;
-		
 }
 
 void deck::shuffle() {
-
 	random_shuffle(d.begin(), d.end());
 }
 
 card deck::draw() {
 	card c = d.back();
 	d.pop_back();
+	
 	return c;
 }
 
-bool deck::is_empty() {
+bool deck::is_empty()const {
+	
 	return !d.size();
 }
 
 vector<card> deck::deal() {
 	vector<card> cards;
+	
 	for (int i = 0; i < 10; i++) {
 		cards.push_back(d.back());
 		d.pop_back();
 	}
+
 	return cards;
 }
